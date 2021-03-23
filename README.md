@@ -42,7 +42,7 @@ The pipeline consists of several steps, which need not all be rerun every time.
 
 ### Running the pipeline
 
-Open the `config.json` file in the root directory and un-ignore the steps you
+Open the `config.json` file and un-ignore the steps you
 want to run by setting them to `false`. Then, make sure that input and output
 file names align. Here's a nice little chart to help you understand (A-H are
 file names).
