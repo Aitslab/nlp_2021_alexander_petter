@@ -49,7 +49,7 @@ def _download_data(api_url: str):
     if res.status_code != 200:
         raise requests.HTTPError(res.reason)
 
-    with open("{}/medline.xml".format(_tmp_dir), "w") as f:
+    with open("{}/medline.xml".format(_tmp_dir), "w",encoding="utf-8") as f:
         f.write(res.text)
 
     medline_json_list = pp.parse_medline_xml("{}/medline.xml".format(_tmp_dir))
