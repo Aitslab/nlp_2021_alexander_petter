@@ -45,11 +45,12 @@ Download the model and model vocab.
 **[BioBERT-Base fine-tuned ONNX-model with vocabulary](https://drive.google.com/drive/folders/1neThCq4MqFPd0133WDDC4MYUycE84fT7?usp=sharing)** - fine-tuned on BC5CDR-chem dataset
 
 ### Running the pipeline
-Make input and output folders. Place the input files for the CORD loader or the downloader into the input folder. 
+Make the following folders in your main directory: input, output, biobert_onnx. Place the input files for the CORD loader or the downloader into the input folder and the biobert model and vocab in the biobert_onnx folder. 
 
 Edit the `config.json` file:
-1. un-ignore the steps you want to run by setting them to `false`. 2. Define the input and output json files (folders you created above).
-2. If you use the ner part define the paths to the BioBERT model and vocab file
+1. un-ignore the steps you want to run by setting them to `false`. 
+2. Check that you have the correct paths to your input, output and biobert_onnx folder
+
 Here's a nice little chart to help you understand (A-H are
 file names).
 
