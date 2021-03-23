@@ -41,6 +41,8 @@ The pipeline consists of several steps, which need not all be rerun every time.
 - Optional step: `analysis` will analyse the NER results to find co-occurrences.
 
 ### Running the pipeline
+create input and output folders. Place the input files for the CORD loader or the 
+downloader into the input folder
 
 Open the `config.json` file and un-ignore the steps you
 want to run by setting them to `false`. Then, make sure that input and output
