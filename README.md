@@ -40,7 +40,7 @@ The pipeline consists of several steps, which need not all be rerun every time.
 - Optional step: `metrics` will create metrics such as F1-score for the NER model.
 - Optional step: `analysis` will analyse the NER results to find co-occurrences.
 
-## Download the model
+### Download the model
 Download the model and model vocab.
 **[BioBERT-Base fine-tuned ONNX-model with vocabulary](https://drive.google.com/drive/folders/1neThCq4MqFPd0133WDDC4MYUycE84fT7?usp=sharing)** - fine-tuned on BC5CDR-chem dataset
 
