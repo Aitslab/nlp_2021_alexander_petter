@@ -5,7 +5,7 @@ seaborn
 #numpy # already comes from NER
 
 # downloader.py
-pubmed_parser
+git+git://github.com/titipata/pubmed_parser.git
 requests~=2.24
 
 # ner.py
