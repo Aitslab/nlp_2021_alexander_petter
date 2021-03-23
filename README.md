@@ -14,7 +14,9 @@ conda install python==3.7
 
 This will create an empty environment and install Python 3.7 together with
 the corresponding version of pip. We will then use _that_ version of pip
-to install the requirements:
+to install the requirements.
+
+Clone this repo using git, navigate to the folder. Then run:
 
 ```
 pip install -r requirements.txt
