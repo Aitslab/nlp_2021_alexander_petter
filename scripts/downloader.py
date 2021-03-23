@@ -39,6 +39,8 @@ def _run(input_file: str, output_file: str, batch_size: int):
 
 
 def _build_api_url(pmid_list: List[str], retmode="xml"):
+# builds the URL to be used with the NCBI eFetch utility, can also be used for other NCBI databases
+# see here: https://www.ncbi.nlm.nih.gov/books/NBK25499/
     return ("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
             "?db=pubmed&id={}&retmode={}&rettype=abstract"
             ).format(",".join(pmid_list), retmode)
