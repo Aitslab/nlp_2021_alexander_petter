@@ -40,13 +40,17 @@ The pipeline consists of several steps, which need not all be rerun every time.
 - Optional step: `metrics` will create metrics such as F1-score for the NER model.
 - Optional step: `analysis` will analyse the NER results to find co-occurrences.
 
-### Running the pipeline
-create input and output folders. Place the input files for the CORD loader or the 
-downloader into the input folder
+## Download the model
+Download the model and model vocab.
+**[BioBERT-Base fine-tuned ONNX-model with vocabulary](https://drive.google.com/drive/folders/1neThCq4MqFPd0133WDDC4MYUycE84fT7?usp=sharing)** - fine-tuned on BC5CDR-chem dataset
 
-Open the `config.json` file and un-ignore the steps you
-want to run by setting them to `false`. Then, make sure that input and output
-file names align. Here's a nice little chart to help you understand (A-H are
+### Running the pipeline
+Make input and output folders. Place the input files for the CORD loader or the downloader into the input folder. 
+
+Edit the `config.json` file:
+1. un-ignore the steps you want to run by setting them to `false`. 2. Define the input and output json files (folders you created above).
+2. If you use the ner part define the paths to the BioBERT model and vocab file
+Here's a nice little chart to help you understand (A-H are
 file names).
 
 ```
@@ -77,6 +81,4 @@ python -m tf2onnx.convert --saved-model ./PATH_TO_MODEL_DIR/ --output ./OUT_PATH
 
 `ln -s [absolute path to model] [path to link]`
 
-## Download
 
-**[BioBERT-Base fine-tuned ONNX-model with vocabulary](https://drive.google.com/drive/folders/1neThCq4MqFPd0133WDDC4MYUycE84fT7?usp=sharing)** - fine-tuned on BC5CDR-chem dataset
