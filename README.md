@@ -40,7 +40,7 @@ The pipeline consists of several steps, which need not all be rerun every time.
 - Optional step: `metrics` will create metrics such as F1-score for the NER model.
 - Optional step: `analysis` will analyse the NER results to find co-occurrences.
 
-### Download the model
+### Download the NER model
 Download the model and model vocab.
 **[BioBERT-Base fine-tuned ONNX-model with vocabulary](https://drive.google.com/drive/folders/1neThCq4MqFPd0133WDDC4MYUycE84fT7?usp=sharing)** - fine-tuned on BC5CDR-chem dataset
 
@@ -82,4 +82,6 @@ python -m tf2onnx.convert --saved-model ./PATH_TO_MODEL_DIR/ --output ./OUT_PATH
 
 `ln -s [absolute path to model] [path to link]`
 
-
+## Corpora used for training
+The Chemprot corpus has annotations for chemical-gene/protein interactions in the direction chemical -> protein only 
+(i.e. only relations of “what a chemical does to a gene/protein")
