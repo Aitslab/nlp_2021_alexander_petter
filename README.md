@@ -64,6 +64,12 @@ file names).
 
 Then run the script by doing: `python main.py`
 
+## Training a new BioBERT NER model
+Upload the datasets for training. For the RE-model you need to use the preprocessing we describe in utils > chemprot
+
+Training BioBERT
+https://github.com/askft/thesis-code/blob/master/training/notebooks/bert.ipynb
+
 ## Converting BioBERT (TensorFlow) to ONNX
 
 First make sure to install `tf2onnx`:
