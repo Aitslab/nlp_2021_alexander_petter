@@ -257,7 +257,8 @@ for epoch_i in range(0, epochs):
         # Clear any previously calculated gradients before performing a backward pass
         model.zero_grad()
 
-        # Perform a forward pass (evaluate model on this training batch)
+        # Perform a forward pass (evaluate model on this training batch); 
+        # if it gives an error "bert_finetune.py", line 267, total_train_loss += loss.item() AttributeError: 'str' object has no attribute 'item', see here and change to code in colab notebook https://github.com/wandb/client/issues/1627
         loss, logits = model(batch_input_ids,
                              token_type_ids=None,
                              attention_mask=batch_attention_mask,
