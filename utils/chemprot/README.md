@@ -4,11 +4,13 @@ It includes data sets for:
 * Training
 * Development
 * Test
-The original corpus is in the folder https://github.com/Aitslab/nlp_2021_alexander_petter/tree/master/utils/chemprot/ which is a copy from https://biocreative.bioinformatics.udel.edu/news/corpora/chemprot-corpus-biocreative-vi/
-There are 13 groups of relations with a total of 22 labels, which can be found in the readme.pdf for each subfolder.
-## Extracting relations
 
-Extracting relations can be done by running the `extract_relations.py`-script. To choose which dataset (*train, dev or test*) to extract the relations from, tune the variables in the beginning of the code:
+The original corpus is in the folder https://github.com/Aitslab/nlp_2021_alexander_petter/tree/master/utils/chemprot/ which is a copy from https://biocreative.bioinformatics.udel.edu/news/corpora/chemprot-corpus-biocreative-vi/.
+
+There are 13 groups of relations with a total of 22 labels, which can be found in the readme.pdf for each subfolder.
+
+## Step 1: Extracting relations
+To use the corpus we first need to preprocess it to extract the relations of the train, dev and test set by running the `extract_relations.py`-script. To choose which dataset (*train, dev or test*) to extract the relations from, tune the variables in the beginning of the code:
 ````python
 extra = ""
 p = "chemprot/" + p_train
