@@ -64,7 +64,7 @@ print("Original: ", train_sentences[0])
 print("Tokenized: ", tokenizer.tokenize(train_sentences[0]))
 print("Token IDs: ", tokenizer.convert_tokens_to_ids(tokenizer.tokenize(train_sentences[0])))
 
-max_seq_length = 128
+max_seq_length = 128 #sentences longer than this will be truncated
 longest_sequence = 0
 over_max = 0
 under_max = 0
