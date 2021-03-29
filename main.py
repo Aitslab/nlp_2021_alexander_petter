@@ -47,7 +47,7 @@ def run_sentencer(sentencer_config: dict, ignore: bool) -> dict:
 
     print("Running sentencer script.")
 
-    with open(sentencer_config["input_path"], "r") as f:
+    with open(sentencer_config["input_path"], "r",encoding="utf-8") as f:
         full_articles = json.loads(f.read())
 
     articles = {}
@@ -62,7 +62,7 @@ def run_sentencer(sentencer_config: dict, ignore: bool) -> dict:
             ))
         }
 
-    with open(sentencer_config["output_path"], "w") as f:
+    with open(sentencer_config["output_path"], "w",encoding="utf-8") as f:
         f.write(json.dumps(articles, indent=2, ensure_ascii=False))
 
     print("Finished running sentencer script.")
@@ -78,7 +78,7 @@ def run_ner(ner_config: dict, ignore: bool):
 
     print("Running NER script.")
 
-    with open(ner_config["input_path"], "r") as f:
+    with open(ner_config["input_path"], "r",encoding="utf-8") as f:
         articles = json.loads(f.read())
 
     print("Creating NER session...")
@@ -148,7 +148,7 @@ def run_analysis(analysis_config: dict, ignore: bool):
 
     print("Running analysis script.")
 
-    with open(analysis_config["input_path"], "r") as f:
+    with open(analysis_config["input_path"], "r",encoding="utf-8") as f:
         articles = json.loads(f.read())
 
     analysis.run(articles, analysis_config["output_path"])

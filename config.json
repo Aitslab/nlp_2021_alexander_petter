@@ -2,16 +2,16 @@
   "ignore": {
     "cord_loader": true,
     "downloader": true,
-    "sentencer": true,
+    "sentencer": false,
     "ner": true,
     "re": true,
-    "analysis": false,
+    "analysis": true,
     "metrics": true
   },
   "downloader": {
-    "input_path": "data/pmid.txt",
-    "output_path": "data/text.json",
-    "batch_size": 2
+    "input_path": "input/pmid.txt",
+    "output_path": "output/text.json",
+    "batch_size": 100
   },
   "cord_loader": {
     "input_path": "data/cord/metadata.csv",
@@ -24,7 +24,7 @@
   "ner": {
     "input_path": "output/text-sentences.json",
     "output_path": "output/text-ner.json",
-    "model_dir": "models/biobert/",
+    "model_dir": "biobert_onnx",
     "model_name": "biobert_ner.onnx",
     "model_vocab": "vocab.txt",
     "labels": ["[PAD]", "B", "I", "O", "X", "[CLS]", "[SEP]"],
@@ -32,8 +32,8 @@
     "article_limit": 15
   },
   "re": {
-    "input_path": "data/metadata-ner-done.json",
-    "output_path": "data/metadata-re-done.json",
+    "input_path": "output/text-ner.json",
+    "output_path": "output/text-re.json",
     "model_dir": "models/scibert/",
     "model_name": "pytorch_model.bin",
     "model_vocab": "vocab.txt"
@@ -43,9 +43,9 @@
     "output_path": "output/text-analysis.html"
   },
   "metrics": {
-    "gold-standard_path": "data/gold-standard/BC4CHEMD/",
-    "output_path": "data/metrics.json",
-    "biobert_path": "models/biobert",
+    "gold-standard_path": "data/gold-standard/BC5CDR-chem/",
+    "output_path": "output/metrics.json",
+    "biobert_path": "biobert_onnx",
     "biobert_metrics": true,
     "bilstm_metrics": true,
     "co-occurrence_metrics": true
