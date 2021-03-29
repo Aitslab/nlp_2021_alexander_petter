@@ -69,7 +69,7 @@ def _append_json(path: str, new_data: dict):
         with open(path, "w", encoding="utf-8") as f:
             f.write("{}")
 
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         old_data = json.loads(f.read())
 
     data = {**old_data, **new_data}  # Merge dicts (new overwrites old)
