@@ -9,7 +9,8 @@ The original corpus is in the folder https://github.com/Aitslab/nlp_2021_alexand
 
 There are 13 groups of relations with a total of 22 labels, which can be found in the readme.pdf for each subfolder.
 
-## Step 1: Extracting relations
+## Step 1: Reformatting the ChemProt corpus
+### Extracting relations
 To use the corpus we first need to preprocess it to extract the relations of the train, dev and test set by running the `extract_relations.py`-script. Run the script once for train, once for dev and once for test set: choose which dataset (*train, dev or test*) to extract the relations from, by changing the variables in the beginning of the code:
 ````python
 extra = ""
@@ -22,7 +23,7 @@ We have found that models such as BERT and SciBERT have higher accuracy using en
 
 After running, the output will be available in processed/ with the appropriate file names.
 
-## Step 2: Building datasets
+### Building datasets
 To build your *train, dev or test* run `make_datasets.py`. The partitioning of data is decided by the following code:
 
 ````python
@@ -41,8 +42,6 @@ test_set    = format_dataset(test_set, 1.0, False)
 ````
 If you do not wish to truncate or scale down your data sets, then leave the parameters as above.
 
-
-### Remapping
 As many of the ChemProt labels (column ChemProt, and cpr for class numbers) do not have many occurrences, custom labels are introduced. We also introduce a custom ID (*cid*) to simplify the fine-tuning process:
 
 ````python
@@ -80,6 +79,10 @@ As many of the ChemProt labels (column ChemProt, and cpr for class numbers) do n
     '''
 ````
 
-### Statistics
+#### Statistics
 
-Statistics are taken from the data sets during parsing and output in datasets/. The statistics count each occurrence for our custom labels and by which percentage they make up the dataset. 
+When building the datasets statistics are taken from the data sets during parsing and output in datasets/. The statistics count each occurrence for our custom labels and by which percentage they make up the dataset. 
+
+
+## Training
+After reformatting the ChemProt corpus it can be used to train a model. For this run run bert_finetune.py
