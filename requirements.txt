@@ -25,3 +25,5 @@ tqdm
 # metrics.py
 conlleval==0.2
 
+#chemprot preprocessing
+nltk
