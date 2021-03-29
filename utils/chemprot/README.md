@@ -43,7 +43,7 @@ If you do not wish to truncate or scale down your data sets, then leave the para
 
 
 ### Remapping
-As many of the ChemProt labels do not have many occurrences, and since many of them have to semantic difference in the context of biomedical litterature, custom labels are introduced. We also introduce a custom ID (*cid*) to simplify the fine-tuning process:
+As many of the ChemProt labels (column ChemProt, and cpr for class numbers) do not have many occurrences, custom labels are introduced. We also introduce a custom ID (*cid*) to simplify the fine-tuning process:
 
 ````python
     '''
