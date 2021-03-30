@@ -64,11 +64,14 @@ file names).
 
 Then run the script by doing: `python main.py`
 
-## Training a new BioBERT NER model
-Upload the datasets for training. For the RE-model you need to use the preprocessing we describe in utils > chemprot
+## Training a new model
+Upload the datasets for training. 
 
-Training BioBERT
+### Training BioBERT
 https://github.com/askft/thesis-code/blob/master/training/notebooks/bert.ipynb
+
+### Training a relation extraction model
+For the RE-model see instructions on datasets and training here: https://github.com/Aitslab/nlp_2021_alexander_petter/blob/master/utils/chemprot/README.md
 
 ## Converting BioBERT (TensorFlow) to ONNX
 
