@@ -86,3 +86,4 @@ When building the datasets statistics are taken from the data sets during parsin
 
 ## Step2: Training
 After reformatting the ChemProt corpus it can be used to train a model. For this run run bert_finetune.py
+To use the GPU for training CUDA Toolkit (https://developer.nvidia.com/cuda-toolkit) and Visual C++ redistributable packages (https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) need to be installed.
