@@ -153,7 +153,7 @@ test_dataloader     = DataLoader(test_dataset,
                                  batch_size = batch_size
                                  )
 
-
+# Specify model to load. Possible alternative models are: allenai/scibert_scivocab_cased, dmis-lab/biobert-base-cased-v1.1 and dmis-lab/biobert-large-cased-v1.1
 # Will raise warnings since we initialize new weights
 model = BertForSequenceClassification.from_pretrained("allenai/scibert_scivocab_uncased",
                                                       num_labels = 5,
