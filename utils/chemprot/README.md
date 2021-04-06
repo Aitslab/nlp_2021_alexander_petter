@@ -81,7 +81,7 @@ As many of the ChemProt labels (column ChemProt, and cpr for class numbers) do n
 
 #### Statistics
 
-When building the datasets statistics are taken from the data sets during parsing and output in datasets/. The statistics count each occurrence for our custom labels and by which percentage they make up the dataset. 
+When building the datasets statistics are taken from the data sets during parsing and output datasets is placed in datasets/. The statistics count each occurrence for our custom labels and by which percentage they make up the dataset. 
 
 
 ## Step2: Training
