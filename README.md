@@ -65,16 +65,20 @@ file names).
 Then run the script by doing: `python main.py`
 
 ## Training a new model
-Upload the datasets for training. 
+Upload the datasets for training.
 
-### Training BioBERT
-https://github.com/askft/thesis-code/blob/master/training/notebooks/bert.ipynb
+### Training a BioBERT NER model
+Follow the instructions here:
+https://github.com/dmis-lab/biobert
+
+Additional instructions here: https://github.com/Aitslab/BioNLP/blob/master/antton/test_bioBERT.ipynb
+Make sure the actual model is saven (in .pb format)
 
 ### Training a relation extraction model
 For the RE-model see instructions on datasets and training here: https://github.com/Aitslab/nlp_2021_alexander_petter/blob/master/utils/chemprot/README.md
 
 ## Converting BioBERT (TensorFlow) to ONNX
-
+The model to be converted should be in .pb format
 First make sure to install `tf2onnx`:
 
 ```
@@ -86,7 +90,7 @@ Then convert your (exported) TensorFlow model:
 ```
 python -m tf2onnx.convert --saved-model ./PATH_TO_MODEL_DIR/ --output ./OUT_PATH/model_name.onnx
 ```
-
+More info here: https://docs.unity3d.com/Packages/com.unity.barracuda@1.0/manual/Exporting.html
 ## Creating a symlink to a model
 
 `ln -s [absolute path to model] [path to link]`
