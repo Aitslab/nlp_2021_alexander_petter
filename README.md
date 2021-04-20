@@ -98,3 +98,6 @@ More info here: https://docs.unity3d.com/Packages/com.unity.barracuda@1.0/manual
 ## Corpora used for training
 The Chemprot corpus has annotations for chemical-gene/protein interactions in the direction chemical -> protein only 
 (i.e. only relations of “what a chemical does to a gene/protein")
+
+corpora for training BioBERT can be found here:
+https://github.com/dmis-lab/biobert
