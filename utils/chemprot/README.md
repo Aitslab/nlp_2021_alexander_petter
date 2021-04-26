@@ -11,7 +11,7 @@ There are 13 groups of relations with a total of 22 labels, which can be found i
 
 ## Step 1: Reformatting the ChemProt corpus
 ### Extracting relations
-To use the corpus we first need to preprocess it to extract the relations of the train, dev and test set by running the `extract_relations.py`-script. Run the script once for train, once for dev and once for test set: choose which dataset (*train, dev or test*) to extract the relations from, by changing the variables in the beginning of the code:
+To use the corpus we first need to convert it to a line-by-line format. For this, we preprocess it to extract the relations of the train, dev and test set by running the `extract_relations.py`-script. Run the script once for train, once for dev and once for test set: choose which dataset (*train, dev or test*) to extract the relations from, by changing the variables in the beginning of the code:
 ````python
 extra = ""
 p = "chemprot/" + p_train
@@ -24,7 +24,7 @@ We have found that models such as BERT and SciBERT have higher accuracy using en
 After running, the output will be available in processed/ with the appropriate file names.
 
 ### Building datasets
-To build your *train, dev or test* run `make_datasets.py`. The partitioning of data is decided by the following code:
+The three files with processed data from the train, dev and test set are then merged and split into a new train, dev and test set with custom class labels. To build your *train, dev or test* run `make_datasets.py`. The partitioning of data is decided by the following code:
 
 ````python
 r_train = 0.8
