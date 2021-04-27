@@ -88,5 +88,5 @@ When building the datasets statistics are taken from the data sets during parsin
 After reformatting the ChemProt corpus it can be used to train a model. For this run run bert_finetune.py. Train on a GPU if available.
 
 ## References
-Some of the code is from https://mccormickml.com/2019/07/22/BERT-fine-tuning/
+Some of the code is from Chris McCormick and Nick Ryan. (2019, July 22). BERT Fine-Tuning Tutorial with PyTorch. Retrieved from https://mccormickml.com/2019/07/22/BERT-fine-tuning/
 
