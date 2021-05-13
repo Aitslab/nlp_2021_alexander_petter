@@ -37,7 +37,8 @@ The pipeline consists of several steps, which need not all be rerun every time.
     `.tar.gz` files in the [CORD-19 Historical Releases](https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/historical_releases.html) (this seems unavailable for early releases).
 - Step 2 is `sentencer` which processes the data further for use by the models. The input is the json file created by the downloader or cord_loader. The output is a json file with individual sentences.
 - Step 3 is `ner`, named-entity recognition.
-- Step 4 is `re`, relationship extraction.
+- Step 4 is `add_ner_tags` (optional free-standing script) adds brackets to the recognized entities: https://github.com/Aitslab/nlp_2021_alexander_petter/blob/master/under_development/add_ner_tags.py
+- Step 5 is `re`, relationship extraction (under development).
 - Optional step: `metrics` will create metrics such as F1-score for the NER model.
 - Optional step: `analysis` will analyse the NER results to find co-occurrences.
 
