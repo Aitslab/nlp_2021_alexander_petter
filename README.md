@@ -59,9 +59,9 @@ file names).
 ```
 (A)———[downloader]———.                                       .——[analysis]———(E)
                       |———(C)———[sentencer]———(D)———[ner]———|
-(B)———[cord_loader]——'                                       '—————[re]——————(F)
+(B)———[cord_loader]——'                                       '——[add_ner_tags]———(F)———[re]———(G)
 
-(G)———[metrics]———(H)  (independent)
+(H)———[metrics]———(I)  (independent)
 ```
 
 Then run the script by doing: `python main.py`
