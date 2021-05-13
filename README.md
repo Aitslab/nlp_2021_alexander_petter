@@ -42,7 +42,7 @@ The pipeline consists of several steps, which need not all be rerun every time.
 - Optional step: `analysis` will analyse the NER results to find co-occurrences.
 
 ### Download the NER model
-Download the model and model vocab.
+Download the model and model vocab (vocab file is also in biobert_bc5cdr-chem folder).
 **[BioBERT-Base fine-tuned ONNX-model with vocabulary](https://drive.google.com/drive/folders/1neThCq4MqFPd0133WDDC4MYUycE84fT7?usp=sharing)** - fine-tuned on BC5CDR-chem dataset
 
 ### Running the pipeline
