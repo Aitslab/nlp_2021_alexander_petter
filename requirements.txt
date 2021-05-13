@@ -18,7 +18,7 @@ numpy>=1.19
 
 # export_scibert.py
 transformers
-torch==1.8.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+torch
 tqdm
 #numpy # already comes from NER
 
