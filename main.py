@@ -109,9 +109,9 @@ def run_ner(ner_config: dict, ignore: bool):
         except OSError:
             pass
 
-    # Becuase we want to save the result periodically.
+    # Because we want to save the result periodically.
     batch_index = 0
-    batch_size = 10
+    batch_size = 100
 
     # Run prediction on each sentence in each article.
     for pmid in articles:
@@ -129,6 +129,53 @@ def run_ner(ner_config: dict, ignore: bool):
     util.append_to_json_file(ner_config["output_path"], articles)
 
     print("Finished running NER script.")
+
+
+def add_tags(add_tags_config: dict, ignore: bool):
+  #this function adds the entity count and, for sentences with exactly two entities, it encloses entity 1 and 2 in << >> and  [[ ]]
+  #infile = path to file returned by ner module
+  #outfile = path to new json file "text-nertags.json"
+    if ignore:
+        print("Ignoring script: ADD_TAGS.")
+        return
+
+    print("Running ADD_TAGS script.")
+
+    with open(add_tags_config["input_path"], "r",encoding="utf-8") as f:
+        articles = json.loads(f.read())
+
+
+# Because we want to save the result periodically.
+    batch_index = 0
+    batch_size = 500
+
+    # Run prediction on each sentence in each article.
+    for pmid in articles:
+        if batch_index > batch_size:
+            util.append_to_json_file(add_tags_config["output_path"], articles)
+            batch_index = 0
+        sentences = articles[pmid]["sentences"]
+        for i, sentence in enumerate(sentences):
+
+            count = len(articles[pmid]["sentences"][i]["entities"])
+            #x = {"text2": articles[pmid]["sentences"][i]["entities"][0]}
+            if count == 2:
+              entity_1 = articles[pmid]["sentences"][i]["entities"][0]
+              entity_2 = articles[pmid]["sentences"][i]["entities"][1]
+              string = articles[pmid]["sentences"][i]["text"]
+              string = string.replace(entity_1, "<< "+entity_1+" >>")
+              string = string.replace(entity_2, "[[ "+entity_2+" ]]")
+            else:
+              string = ""
+            articles[pmid]["sentences"][i]["tagged"] = string
+            articles[pmid]["sentences"][i]["entitycount"] = count
+
+        batch_index += 1
+
+    util.append_to_json_file(add_tags_config["output_path"], articles)
+
+    print("Finished running ADD_TAGS script.")
+
 
 
 def run_re(re_config: dict, ignore: bool):
@@ -221,6 +268,10 @@ if __name__ == "__main__":
     run_ner(config["ner"], ignore=ignore["ner"])
     print()
 
+    # Run ADD_TAGS on each sentence for each article.
+    add_tags(config["add_tags"], ignore=ignore["add_tags"])
+    print()
+    
     # Run relationship extraction
     run_re(config["re"], ignore=ignore["re"])
     print()
