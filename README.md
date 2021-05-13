@@ -50,7 +50,7 @@ Make the following folders in your main directory: input, output, biobert_onnx. 
 
 Edit the `config.json` file:
 1. un-ignore the steps you want to run by setting them to `false`. 
-2. Check that you have the correct paths to your input, output and biobert_onnx folder
+2. Check that you have the correct paths to your input, output and biobert_onnx folder. Modify the other parameters in the config file if desired. To run the metrics part of the pipeline you have to define the location of the annotated evaluation corpus, e.g. the training file of BC5CDR-chem.
 
 Here's a nice little chart to help you understand (A-H are
 file names).
