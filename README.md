@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 It's important to get this right, since BERT requires TensorFlow 1.15,
 which in its turn requires Python/pip 3.7 (not 3.8). If you get an error for tensorflow (ERROR: Could not find a version that satisfies the requirement tensorflow==1.15.0
-ERROR: No matching distribution found for tensorflow==1.15.0) upgrade pip: python -m pip install --upgrade pip setuptools
+ERROR: No matching distribution found for tensorflow==1.15.0) check if you are inside the environment you made.
 
 ### Understanding the pipeline
 
