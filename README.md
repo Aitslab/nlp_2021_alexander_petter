@@ -74,7 +74,7 @@ Follow the instructions here:
 https://github.com/dmis-lab/biobert
 
 Additional instructions here: https://github.com/Aitslab/BioNLP/blob/master/antton/test_bioBERT.ipynb
-Make sure the actual model is saven (in .pb format)
+Make sure the actual model is saved (in .pb format)
 
 ### Training a relation extraction model
 For the RE-model see instructions on datasets and training here: https://github.com/Aitslab/nlp_2021_alexander_petter/blob/master/utils/chemprot/README.md
