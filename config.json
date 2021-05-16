@@ -38,10 +38,8 @@
   },
   "re": {
     "input_path": "output/text-tags.json",
-    "output_path": "output/text-re.json",
-    "model_dir": "models/scibert/",
-    "model_name": "pytorch_model.bin",
-    "model_vocab": "vocab.txt"
+    "output_path": "output/text-re.tsv",
+    "model_dir": "models/scibert/"
   },
   "analysis": {
     "input_path": "output/text-ner.json",
