@@ -2,6 +2,11 @@
 
 import json
 import os
+import csv
+import torch
+
+from transformers import BertTokenizer
+from transformers import BertForSequenceClassification
 
 from scripts import cord_loader
 from scripts import downloader
@@ -177,14 +182,45 @@ def add_tags(add_tags_config: dict, ignore: bool):
     print("Finished running ADD_TAGS script.")
 
 
-
+# input  = tagged NER file, dir to pre-trained SciBERT model
+# output = predictions on the format: entity1 relation entity2 sentence
 def run_re(re_config: dict, ignore: bool):
     if ignore:
         print("Ignoring script: RE.")
         return
 
     print("Running RE script.")
-    # TODO
+    
+    # Load model
+    model     = BertForSequenceClassification.from_pretrained(re_config["model_dir"], local_files_only=True, cache_dir=None)
+    tokenizer = BertTokenizer.from_pretrained(re_config["model_dir"])
+    device    = torch.device("cuda")
+    model.to(device)
+    
+    classes   = ["NOT", "PART-OF", "INTERACTOR", "REGULATOR-POSITIVE", "REGULATOR-NEGATIVE"]
+
+    with open(re_config["input_path"], "r",encoding="utf-8") as f:
+      articles = json.loads(f.read())
+
+    with open(re_config["output_path"], "w") as tsv_file:
+      writer = csv.writer(tsv_file, delimiter='\t', lineterminator='\n')
+
+      for article in articles.values():
+        sentences = article["sentences"]
+
+        for sentence in sentences:
+          if sentence["entitycount"] == 2:
+            tagged   = sentence["tagged"]
+            text     = sentence["text"]
+            entities = sentence["entities"]
+
+            # Predict relation
+            input_ids  = torch.tensor(tokenizer.encode(tagged)).unsqueeze(0).to(device)
+            outputs    = model(input_ids)
+            pred_rel   = classes[torch.softmax(outputs.logits, dim=1).argmax()]
+
+            writer.writerow([entities[0], pred_rel, entities[1], text])    
+
     print("Finished running RE script.")
 
 
