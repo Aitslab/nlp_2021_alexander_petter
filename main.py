@@ -178,8 +178,10 @@ def add_tags(add_tags_config: dict, ignore: bool):
     print("Finished running ADD_TAGS script.")
 
 
-# input  = tagged NER file, dir to pre-trained SciBERT model
+# input  = articles from tagged NER file, dir to pre-trained SciBERT model
+#          path to predictions file, path to statistics file
 # output = predictions on the format: entity1 relation entity2 sentence
+#          statistics  on the format: entity1 entity2 relation frequency
 def run_re(re_config: dict, ignore: bool):
     if ignore:
         print("Ignoring script: RE.")
@@ -190,7 +192,7 @@ def run_re(re_config: dict, ignore: bool):
     with open(re_config["input_path"], "r",encoding="utf-8") as f:
       articles = json.loads(f.read())
 
-    re.run(articles, re_config["model_dir"], re_config["output_path"])  
+    re.run(articles, re_config["model_dir"], re_config["preds_path"], re_config["stats_path"]) 
 
     print("Finished running RE script.")
 
