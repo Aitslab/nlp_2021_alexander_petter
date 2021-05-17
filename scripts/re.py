@@ -8,7 +8,7 @@ from transformers import BertForSequenceClassification
 # input  = articles from tagged NER file, dir to pre-trained SciBERT model
 #          path to predictions file, path to statistics file
 # output = predictions on the format: entity1 relation entity2 sentence
-#          statistics  on the format: entity1 entity2 relation frequency
+#          statistics sorted by frequency on the format: entity1 entity2 relation frequency
 def run(articles, model_dir, preds_path, stats_path):
   stats = {}
   setup_model(model_dir)
