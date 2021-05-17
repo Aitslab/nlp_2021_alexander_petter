@@ -181,7 +181,7 @@ def add_tags(add_tags_config: dict, ignore: bool):
 # input  = articles from tagged NER file, dir to pre-trained SciBERT model
 #          path to predictions file, path to statistics file
 # output = predictions on the format: entity1 relation entity2 sentence
-#          statistics  on the format: entity1 entity2 relation frequency
+#          statistics sorted by frequency on the format: entity1 entity2 relation frequency
 def run_re(re_config: dict, ignore: bool):
     if ignore:
         print("Ignoring script: RE.")
