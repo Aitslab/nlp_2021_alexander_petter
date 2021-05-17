@@ -40,7 +40,7 @@
     "input_path": "output/text-tags.json",
     "model_dir": "models/scibert/",
     "preds_path": "output/predictions.tsv",
-    "stats_path": "output/statistics.tsv
+    "stats_path": "output/statistics.tsv"
   },
   "analysis": {
     "input_path": "output/text-ner.json",
