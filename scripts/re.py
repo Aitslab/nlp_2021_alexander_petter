@@ -6,11 +6,14 @@ from transformers import BertForSequenceClassification
 
 
 # input  = articles from tagged NER file, dir to pre-trained SciBERT model
+#          path to predictions file, path to statistics file
 # output = predictions on the format: entity1 relation entity2 sentence
-def run(articles, model_dir, output_path):
+#          statistics  on the format: entity1 entity2 relation frequency
+def run(articles, model_dir, preds_path, stats_path):
+  stats = {}
   setup_model(model_dir)
 
-  with open(output_path, "w") as tsv_file:
+  with open(preds_path, "w") as tsv_file:
     writer = csv.writer(tsv_file, delimiter='\t', lineterminator='\n')
 
     for article in articles.values():
@@ -20,10 +23,24 @@ def run(articles, model_dir, output_path):
         if sentence["entitycount"] == 2:
           tagged   = sentence["tagged"]
           text     = sentence["text"]
-          entities = sentence["entities"]
-          pred_rel = predict_relation(tagged)
+          entity1  = sentence["entities"][0]
+          entity2  = sentence["entities"][1]
 
-          writer.writerow([entities[0], pred_rel, entities[1], text])
+          pred_rel = predict_relation(tagged)
+          add_count(entity1, entity2, pred_rel, stats)
+
+          writer.writerow([entity1, pred_rel, entity2, text])
+  
+  sorted_stats = sorted(stats.items(), key=lambda x: x[1], reverse=True)
+  write_stats(stats_path, sorted_stats)
+
+
+def add_count(entity1, entity2, relation, stats):
+
+  if (entity1, entity2, relation) in stats:
+    stats[(entity1, entity2, relation)] += 1
+  else:
+    stats[(entity1, entity2, relation)] = 1
 
 
 def setup_model(model_dir):
@@ -34,9 +51,19 @@ def setup_model(model_dir):
   device    = torch.device("cuda")
   model.to(device)
 
+
 def predict_relation(tagged):
   classes    = ["NOT", "PART-OF", "INTERACTOR", "REGULATOR-POSITIVE", "REGULATOR-NEGATIVE"]
   input_ids  = torch.tensor(tokenizer.encode(tagged)).unsqueeze(0).to(device)
   outputs    = model(input_ids)
   pred_rel   = classes[torch.softmax(outputs.logits, dim=1).argmax()]
   return pred_rel
+
+
+def write_stats(stats_path, sorted_stats):
+
+  with open(stats_path, "w") as tsv_file:
+    writer = csv.writer(tsv_file, delimiter='\t', lineterminator='\n')
+
+    for (entity1, entity2, relation), count in sorted_stats:
+      writer.writerow([entity1, entity2, relation, count])
