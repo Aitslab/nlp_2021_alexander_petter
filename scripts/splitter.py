@@ -1,5 +1,5 @@
 # coding=utf-8
-# https://stackoverflow.com/a/31505798
+# code adopted from https://stackoverflow.com/a/31505798 (accessed 2022-04-01)
 
 import re
 alphabets = r"([A-Za-z])"
